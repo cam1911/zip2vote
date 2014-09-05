@@ -1,0 +1,5 @@
+zip2_vote_vote:
+    resource: "@Zip2VoteVoteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
