@@ -23,3 +23,5 @@ nbproject
 
 /app/bootstrap.php.cache
 /app/config/parameters.yml
+
+bower_components
