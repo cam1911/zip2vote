@@ -36,43 +36,40 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Brand</a>
+              <a class="navbar-brand" href="/">Zip2Vote</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+                <li class="active"><a href="#">Polling Locations</a></li>
+                <li><a href="#">Voter Registration</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Candidates</a></li>
+                    <li><a href="#">Elections</a></li>
+                    <li><a href="#">Important Dates</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">One more separated link</a></li>
+                    <li><a href="#">Wendy Davis for Governor</a></li>
                   </ul>
                 </li>
               </ul>
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
+                  <input type="text" class="form-control" placeholder="Candidates, elections, or other information">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">Search</button>
               </form>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
+                <li><a href="#">Sign up</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Update profile</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">Link Facebook</a></li>
                   </ul>
                 </li>
               </ul>
@@ -84,20 +81,20 @@
             <div class="row">
                 <div class="col-lg-offset-3 col-lg-6">
                     <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input type="text" class="form-control" placeholder="Name">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-primary">Zip 2 Vote &raquo;</button>
                         </span>
                     </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Lookup Polling and Voter Registration</div>
+                        <div class="panel-body">
+                            {{ form(newUserForm) }}
+                        </div>
+                    </div>
                 </div>
             </div>
                 
-            <div class="panel panel-default">
-                <div class="panel-heading">Lookup Polling and Voter Registration</div>
-                <div class="panel-body">
-                    {{ form(newUserForm) }}
-                </div>
-            </div>
                 
             <div class="row">
                 <div class="col-lg-offset-4 col-lg-4" id="externalLogins">

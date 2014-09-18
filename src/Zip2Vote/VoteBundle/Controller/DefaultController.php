@@ -5,7 +5,7 @@ namespace Zip2Vote\VoteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Zip2Vote\VoteBundle\Form\ProfileType;
+use Zip2Vote\VoteBundle\Form\RegisterType;
 
 class DefaultController extends Controller
 {
@@ -47,7 +47,7 @@ class DefaultController extends Controller
      */
     private function createCreateForm()
     {
-        $form = $this->createForm(new ProfileType(), null, array(
+        $form = $this->createForm(new RegisterType(), null, array(
 //            'action' => $this->generateUrl('profile_create'),
             'method' => 'POST',
         ));
