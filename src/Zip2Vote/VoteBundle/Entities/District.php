@@ -1,84 +1,75 @@
 <?php
-
 namespace Zip2Vote\VoteBundle\Entity;
 
-class District {
-
+class District 
+{
     /**
-     *
      * @var string
      */
     private $stateRepresentative;
     
     /**
-     *
      * @var string
      */
     private $name;
     
     /**
-     *
      * @var string
      */
     private $mapCoordinates;
 
-    
-    function __construct($stateRepresentative, district $name, $mapCoordinates) {
-        $this->stateRepresentative = $stateRepresentative;
-        $this->name = $name;
-        $this->mapCoordinates = $mapCoordinates;
-    }
-    
     /**
-     * 
      * @return string
      */
-    public function getStateRepresentative() {
+    public function getStateRepresentative()
+    {
         return $this->stateRepresentative;
     }
 
     /**
-     * 
-     * @param type $stateRepresentative
+     * @param string $stateRepresentative
+     * @return \Zip2Vote\VoteBundle\Entity\District
      */
-    public function setStateRepresentative($stateRepresentative) {
-        $this->stateRepresentative = $stateRepresentative;
+    public function setStateRepresentative($stateRepresentative)
+    {
+        $this->stateRepresentative = (string)$stateRepresentative;
+        return $this;
     }
 
     /**
-     * 
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
     /**
-     * 
-     * @param \Zip2Vote\VoteBundle\Entity\district $name
+     * @param string $name
+     * @return \Zip2Vote\VoteBundle\Entity\District
      */
-    public function setName(string $name) {
-        $this->name = $name;
+    public function setName($name)
+    {
+        $this->name = (string)$name;
+        return $this;
     }
 
+    
     /**
-     * 
      * @return string
      */
-    public function getMapCoordinates() {
+    public function getMapCoordinates()
+    {
         return $this->mapCoordinates;
     }
 
     /**
-     * 
-     * @param type $mapCoordinates
+     * @param string $mapCoordinates
+     * @return \Zip2Vote\VoteBundle\Entity\District
      */
-    public function setMapCoordinates($mapCoordinates) {
-        $this->mapCoordinates = $mapCoordinates;
+    public function setMapCoordinates($mapCoordinates)
+    {
+        $this->mapCoordinates = (string)$mapCoordinates;
+        return $this;
     }
-
-
-
 }
-
-?>
