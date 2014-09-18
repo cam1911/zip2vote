@@ -3,14 +3,14 @@
 namespace Zip2Vote\VoteBundle\Entity;
 
 class ExternalProfile {
-    
+
     /**
      *
-     * @var enum
+     * @var 
      */
     private $provider;
-    
-    function __construct(enum $provider) {
+
+    function __construct($provider) {
         $this->provider = $provider;
     }
 
@@ -26,10 +26,10 @@ class ExternalProfile {
      * 
      * @param \Zip2Vote\VoteBundle\Entity\enum $provider
      */
-    public function setProvider(enum $provider) {
+    public function setProvider($provider) {
         $this->provider = $provider;
     }
 
-
 }
+
 ?>

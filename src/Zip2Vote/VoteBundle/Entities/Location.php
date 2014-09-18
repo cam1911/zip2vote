@@ -29,7 +29,7 @@ class Location {
     private $city;
 
     /**
-     * @var enum
+     * @var 
      */
     private $state;
 
@@ -41,19 +41,9 @@ class Location {
 
     /**
      *
-     * @var char
+     * @var string
      */
     private $zipCode;
-    
-    function __construct($address1, $address2, $address3, $city, enum $state, $county, char $zipCode) {
-        $this->address1 = $address1;
-        $this->address2 = $address2;
-        $this->address3 = $address3;
-        $this->city = $city;
-        $this->state = $state;
-        $this->county = $county;
-        $this->zipCode = $zipCode;
-    }
 
     /**
      * 
@@ -69,6 +59,7 @@ class Location {
      */
     public function setAddress1($address1) {
         $this->address1 = $address1;
+        return $this;
     }
 
     /**
@@ -85,6 +76,7 @@ class Location {
      */
     public function setAddress2($address2) {
         $this->address2 = $address2;
+        return $this;
     }
 
     /**
@@ -101,6 +93,7 @@ class Location {
      */
     public function setAddress3($address3) {
         $this->address3 = $address3;
+        return $this;
     }
 
     /**
@@ -113,15 +106,16 @@ class Location {
 
     /**
      * 
-     * @param type $city
+     * @param city $city
      */
     public function setCity($city) {
         $this->city = $city;
+        return $this;
     }
 
     /**
      * 
-     * @return enum
+     * @return state
      */
     public function getState() {
         return $this->state;
@@ -133,6 +127,7 @@ class Location {
      */
     public function setState(enum $state) {
         $this->state = $state;
+        return $this;
     }
 
     /**
@@ -148,7 +143,8 @@ class Location {
      * @param string $county
      */
     public function setCounty($county) {
-        $this->county = $county;
+        $this->county = (string) $county;
+        return $this;
     }
 
     /**
@@ -161,13 +157,12 @@ class Location {
 
     /**
      * 
-     * @param \Zip2Vote\VoteBundle\Entity\char $zipCode
+     * @param \Zip2Vote\VoteBundle\Entity\string $zipCode
      */
-    public function setZipCode(char $zipCode) {
-        $this->zipCode = $zipCode;
+    public function setZipCode(string $zipCode) {
+        $this->zipCode = (string) $zipCode;
+        return $this;
     }
-
-
 
 }
 

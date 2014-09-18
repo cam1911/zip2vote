@@ -45,23 +45,13 @@ class Profile {
      * @ORM\Column(name="preferredParty", type="Party", length=50)
      */
     private $preferredParty;
-    
+
     /**
      * @var district
      *
      * @ORM\Column(name="district", type="District", length=50)
      */
     private $district;
-
-    function __construct($name, $address, $dob, $location, $registeredParty, $preferredParty, $district) {
-        $this->name = $name;
-        $this->address = $address;
-        $this->dob = $dob;
-        $this->location = $location;
-        $this->registeredParty = $registeredParty;
-        $this->preferredParty = $preferredParty;
-        $this->district = $district;
-    }
 
     /**
      * Get Name
@@ -80,6 +70,7 @@ class Profile {
      */
     public function setName($name) {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -99,6 +90,7 @@ class Profile {
      */
     public function setAddress($address) {
         $this->address = $address;
+        return $this;
     }
 
     /**
@@ -109,7 +101,7 @@ class Profile {
     public function getDob() {
         return $this->dob;
     }
-    
+
     /**
      * 
      * @param dob $dob
@@ -117,6 +109,7 @@ class Profile {
      */
     public function setDob($dob) {
         $this->dob = $dob;
+        return $this;
     }
 
     /**
@@ -135,8 +128,9 @@ class Profile {
      */
     public function setLocation($location) {
         $this->location = $location;
+        return $this;
     }
-    
+
     /**
      * Get RegisteredParty
      *
@@ -153,6 +147,7 @@ class Profile {
      */
     public function setRegisteredParty($registeredParty) {
         $this->registeredParty = $registeredParty;
+        return $this;
     }
 
     /**
@@ -163,7 +158,7 @@ class Profile {
     public function getPreferredParty() {
         return $this->preferredParty;
     }
-    
+
     /**
      * 
      * @param Party $preferredParty
@@ -171,6 +166,7 @@ class Profile {
      */
     public function setPreferredParty($preferredParty) {
         $this->preferredParty = $preferredParty;
+        return $this;
     }
 
     /**
@@ -189,6 +185,7 @@ class Profile {
      */
     public function setDistrict($district) {
         $this->district = $district;
+        return $this;
     }
 
 }

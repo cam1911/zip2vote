@@ -12,27 +12,22 @@ class Account {
 
     /**
      *
-     * @var string length=512
+     * @var string
      */
     private $password;
+
     /**
      *
      * @var ExternalProfile
      */
     private $externalProfile;
+
     /**
      *
      * @var Profile
      */
     private $profile;
-    
-    function __construct(Email $email, string $password, ExternalProfile $externalProfile, Profile $profile) {
-        $this->email = $email;
-        $this->password = $password;
-        $this->externalProfile = $externalProfile;
-        $this->profile = $profile;
-    }
-    
+
     /**
      * 
      * @return Email
@@ -45,8 +40,9 @@ class Account {
      * 
      * @param \Zip2Vote\VoteBundle\Entity\Email $email
      */
-    public function setEmail(Email $email) {
+    public function setEmail($email) {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -61,8 +57,9 @@ class Account {
      * 
      * @param string $password
      */
-    public function setPassword(string $password) {
-        $this->password = $password;
+    public function setPassword($password) {
+        $this->password = (string) $password;
+        return $this;
     }
 
     /**
@@ -77,8 +74,9 @@ class Account {
      * 
      * @param \Zip2Vote\VoteBundle\Entity\ExternalProfile $externalProfile
      */
-    public function setExternalProfile(ExternalProfile $externalProfile) {
+    public function setExternalProfile($externalProfile) {
         $this->externalProfile = $externalProfile;
+        return $this;
     }
 
     /**
@@ -93,12 +91,10 @@ class Account {
      * 
      * @param \Zip2Vote\VoteBundle\Entity\Profile $profile
      */
-    public function setProfile(Profile $profile) {
+    public function setProfile($profile) {
         $this->profile = $profile;
+        return $this;
     }
-
-
-
 
 }
 
