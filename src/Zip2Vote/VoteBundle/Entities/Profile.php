@@ -1,7 +1,10 @@
 <?php
 
-namespace Zip2Vote\VoteBundle\Entity;
+namespace Zip2Vote\VoteBundle\Entities;
 
+/**
+ * @deprecated since version 0.0.0 Use Zip2Vote\VoteBundle\Entity\Profile
+ */
 class Profile {
 
     /**
