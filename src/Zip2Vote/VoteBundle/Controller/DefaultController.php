@@ -5,6 +5,7 @@ namespace Zip2Vote\VoteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Zip2Vote\VoteBundle\Form\ProfileType;
 
 class DefaultController extends Controller
 {
@@ -33,7 +34,26 @@ class DefaultController extends Controller
 //        exit;
         
         return array(
-            'newUserForm'
+            'newUserForm' => $this->createCreateForm()->createView()
         );
+    }
+    
+    /**
+     * Creates a form to create a Profile entity.
+     *
+     * @param Profile $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm()
+    {
+        $form = $this->createForm(new ProfileType(), null, array(
+//            'action' => $this->generateUrl('profile_create'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Zip2Vote'));
+
+        return $form;
     }
 }
