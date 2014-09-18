@@ -1,1 +1,30 @@
-Hello {{ name }}!
+<!DOCTYPE html />
+<html lang="en">
+    <head>
+        <title>Zip2Vote</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+{% block stylesheets %}
+    {% stylesheets 
+        'bootstrap/dist/css/bootstrap.css' 
+        'bootstrap/dist/css/bootstrap-theme.css' 
+        'fontawesome/css/fontawesome.css' 
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+        
+{% block javascripts %}
+    {% javascripts 
+        'jquery/dist/jquery.js' 
+        'bootstrap/dist/js/bootstrap.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+        
+    </head>
+    <body>
+        <button class="btn btn-primary">Zip 2 Vote &raquo;</button>
+        
+    </body>
+</html>
