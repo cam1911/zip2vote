@@ -20,3 +20,6 @@ vendor
 nbproject
 /app/logs
 /app/cache
+
+/app/bootstrap.php.cache
+/app/config/parameters.yml
