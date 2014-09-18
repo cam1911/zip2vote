@@ -32,6 +32,8 @@ class DefaultController extends Controller
 //        echo curl_exec($ch);
 //        exit;
         
-        return array();
+        return array(
+            'newUserForm'
+        );
     }
 }
