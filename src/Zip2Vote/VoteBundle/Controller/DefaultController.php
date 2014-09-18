@@ -9,11 +9,30 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
+        $params = array(
+            'eMbrKey' => 'Peca, Lauren',
+            'pbSrch' => ' Search '
+        );
+
+        foreach ($params as $k => $v) {
+            $params[$k] = $k . '=' . $v;
+        }
+        $postData = implode('&', $params);
+
+        $ch = curl_init('www.uschess.org/assets/msa_joomla/MbrLst.php');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData); 
+        echo curl_exec($ch);
+        
+        
+        die('curl end');
+        
         return array('name' => $name);
     }
 }
