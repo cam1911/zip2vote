@@ -24,11 +24,12 @@ class DefaultController extends Controller
         }
         $postData = implode('&', $params);
 
-        $ch = curl_init('www.uschess.org/assets/msa_joomla/MbrLst.php');
+        $ch = curl_init('http://www.uschess.org/assets/msa_joomla/MbrLst.php');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData); 
-        echo curl_exec($ch);
+        var_dump( curl_exec($ch));
+        var_dump(curl_error($ch));
         
         
         die('curl end');
