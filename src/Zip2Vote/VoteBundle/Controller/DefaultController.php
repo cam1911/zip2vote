@@ -28,11 +28,9 @@ class DefaultController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData); 
-        var_dump( curl_exec($ch));
-        var_dump(curl_error($ch));
         
-        
-        die('curl end');
+        echo curl_exec($ch);
+        exit;
         
         return array('name' => $name);
     }
