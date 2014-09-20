@@ -1,105 +1,26 @@
-<!DOCTYPE html />
-<html lang="en">
-    <head>
-        <title>Zip2Vote</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-{% block stylesheets %}
-    {% stylesheets 
-        'bootstrap/dist/css/bootstrap.css' 
-        'bootstrap/dist/css/bootstrap-theme.css' 
-        'fontawesome/css/fontawesome.css' 
-        '@Zip2VoteVoteBundle/Resources/public/css/index.css' 
-        filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-{% endblock %}
-        
-{% block javascripts %}
-    {% javascripts 
-        'jquery/dist/jquery.js' 
-        'bootstrap/dist/js/bootstrap.js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
-        
-    </head>
-    <body>
-        {% block navbar %}
-        <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">Zip2Vote</a>
-            </div>
+{% extends '::layout.main.html.twig' %}
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Polling Locations</a></li>
-                <li><a href="#">Voter Registration</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Candidates</a></li>
-                    <li><a href="#">Elections</a></li>
-                    <li><a href="#">Important Dates</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Wendy Davis for Governor</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Candidates, elections, or other information">
-                </div>
-                <button type="submit" class="btn btn-default">Search</button>
-              </form>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Sign up</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Update profile</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Link Facebook</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-        </div>
-        </nav>
-        {% endblock %}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-offset-2 col-lg-6">
-                    <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" placeholder="Name">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary">Zip 2 Vote &raquo;</button>
-                        </span>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Lookup Polling and Voter Registration</div>
-                        <div class="panel-body">
-                            {{ form(newUserForm) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-center" id="externalLogins">
-                    <h1>Auto Fill Your Data</h1>
-                    {% image '@Zip2VoteVoteBundle/Resources/public/img/login-fb-lg-400.png' %}
-                        <img src="{{ asset_url }}" alt="Login with Facebook" title="Login with Facebook" />
-                    {% endimage %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-6">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Name">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary">Zip 2 Vote &raquo;</button>
+                </span>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Lookup Polling and Voter Registration</div>
+                <div class="panel-body">
+                    {{ form(newUserForm) }}
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        <div class="col-lg-3 text-center" id="externalLogins">
+            <h1>Auto Fill Your Data</h1>
+            {% image '@Zip2VoteVoteBundle/Resources/public/img/login-fb-lg-400.png' %}
+                <img src="{{ asset_url }}" alt="Login with Facebook" title="Login with Facebook" />
+            {% endimage %}
+        </div>
+    </div>
+{% endblock %}
