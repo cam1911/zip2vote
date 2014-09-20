@@ -1,26 +1,46 @@
 {% extends '::layout.main.html.twig' %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-lg-offset-2 col-lg-6">
-            <div class="input-group input-group-lg">
-                <input type="text" class="form-control" placeholder="Name">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary">Zip 2 Vote &raquo;</button>
-                </span>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+        <div class="row">
+            <div class="col-lg-offset-3 col-lg-3">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" placeholder="Name">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary">Zip 2 Vote &raquo;</button>
+                    </span>
+                </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Lookup Polling and Voter Registration</div>
-                <div class="panel-body">
-                    {{ form(newUserForm) }}
+            <div class="col-lg-3 text-center" id="externalLogins">
+                <h1>Auto Fill Your Data</h1>
+                {% image '@Zip2VoteVoteBundle/Resources/public/img/login-fb-lg-400.png' %}
+                    <img src="{{ asset_url }}" alt="Login with Facebook" title="Login with Facebook" />
+                {% endimage %}
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="row">
+            <div class="col-lg-offset-3 col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Lookup Polling and Voter Registration</div>
+                    <div class="panel-body">
+                        {{ form(newUserForm) }}
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 text-center" id="externalLogins">
-            <h1>Auto Fill Your Data</h1>
-            {% image '@Zip2VoteVoteBundle/Resources/public/img/login-fb-lg-400.png' %}
-                <img src="{{ asset_url }}" alt="Login with Facebook" title="Login with Facebook" />
-            {% endimage %}
-        </div>
     </div>
+  </div>
+</div>
 {% endblock %}
