@@ -13,19 +13,20 @@
   <div class="carousel-inner">
     <div class="item active">
         <div class="row">
-            <div class="col-lg-offset-3 col-lg-3">
-                <div class="input-group input-group-lg">
+            <div class="col-lg-offset-3 col-lg-3 text-center" id="externalLogins">
+                <h1>Auto Fill Your Data</h1>
+                {% image '@Zip2VoteVoteBundle/Resources/public/img/login-fb-lg-400.png' %}
+                    <img src="{{ asset_url }}" alt="Login with Facebook" title="Login with Facebook" />
+                {% endimage %}
+            </div>
+            <div class="col-lg-offset-1 col-lg-3 text-center">
+                <h1>Find Polling Locations</h1>
+                <div class="input-group input-group-lg" style="margin-top: 5vh;">
                     <input type="text" class="form-control" placeholder="Name">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-primary">Zip 2 Vote &raquo;</button>
                     </span>
                 </div>
-            </div>
-            <div class="col-lg-3 text-center" id="externalLogins">
-                <h1>Auto Fill Your Data</h1>
-                {% image '@Zip2VoteVoteBundle/Resources/public/img/login-fb-lg-400.png' %}
-                    <img src="{{ asset_url }}" alt="Login with Facebook" title="Login with Facebook" />
-                {% endimage %}
             </div>
         </div>
     </div>
