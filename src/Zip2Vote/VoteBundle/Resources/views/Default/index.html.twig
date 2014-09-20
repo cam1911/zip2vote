@@ -79,7 +79,7 @@
         {% endblock %}
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-offset-3 col-lg-6">
+                <div class="col-lg-offset-2 col-lg-6">
                     <div class="input-group input-group-lg">
                         <input type="text" class="form-control" placeholder="Name">
                         <span class="input-group-btn">
@@ -93,11 +93,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-                
-                
-            <div class="row">
-                <div class="col-lg-offset-4 col-lg-4" id="externalLogins">
+                <div class="col-lg-3 text-center" id="externalLogins">
+                    <h1>Auto Fill Your Data</h1>
                     {% image '@Zip2VoteVoteBundle/Resources/public/img/login-fb-lg-400.png' %}
                         <img src="{{ asset_url }}" alt="Login with Facebook" title="Login with Facebook" />
                     {% endimage %}
