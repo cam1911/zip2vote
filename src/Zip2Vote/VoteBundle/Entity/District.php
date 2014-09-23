@@ -1,24 +1,36 @@
 <?php
 namespace Zip2Vote\VoteBundle\Entity;
 
+/**
+ * District
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Zip2Vote\VoteBundle\Entity\DistrictRepository")
+ */
 class District 
 {
     /**
      * @var string
+     *
+     * @ORM\OneToOne(targetEntity="ValueObject\Legislator")
+     * @ORM\Column(nullable=true)
      */
     private $stateRepresentative;
     
     /**
      * @var string
+     * @ORM\Column(nullable=false)
      */
     private $name;
     
     /**
      * @var string
+     * @ORM\Column(nullable=false)
      */
     private $mapCoordinates;
 
     /**
+     * Get stateRepresentative
      * @return string
      */
     public function getStateRepresentative()
@@ -27,8 +39,9 @@ class District
     }
 
     /**
+     * Set stateRepresentative
      * @param string $stateRepresentative
-     * @return \Zip2Vote\VoteBundle\Entity\District
+     * @return District
      */
     public function setStateRepresentative($stateRepresentative)
     {
@@ -37,6 +50,7 @@ class District
     }
 
     /**
+     * Get name
      * @return string
      */
     public function getName()
@@ -45,8 +59,9 @@ class District
     }
 
     /**
+     * Set name
      * @param string $name
-     * @return \Zip2Vote\VoteBundle\Entity\District
+     * @return District
      */
     public function setName($name)
     {
@@ -56,6 +71,7 @@ class District
 
     
     /**
+     * Get mapCoordinates
      * @return string
      */
     public function getMapCoordinates()
@@ -64,8 +80,9 @@ class District
     }
 
     /**
+     * Set mapCoordinates
      * @param string $mapCoordinates
-     * @return \Zip2Vote\VoteBundle\Entity\District
+     * @return District
      */
     public function setMapCoordinates($mapCoordinates)
     {

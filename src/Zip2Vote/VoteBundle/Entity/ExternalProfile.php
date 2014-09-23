@@ -2,6 +2,12 @@
 
 namespace Zip2Vote\VoteBundle\Entity;
 
+/**
+ * ExternalProfile
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Zip2Vote\VoteBundle\Entity\ExternalProfileRepository")
+ */
 class ExternalProfile {
 
     /**
@@ -10,12 +16,8 @@ class ExternalProfile {
      */
     private $provider;
 
-    function __construct($provider) {
-        $this->provider = $provider;
-    }
-
     /**
-     * 
+     * Get provider
      * @return provider
      */
     public function getProvider() {
@@ -23,8 +25,9 @@ class ExternalProfile {
     }
 
     /**
-     * 
-     * @param \Zip2Vote\VoteBundle\Entity\enum $provider
+     * Set provider
+     * @param $provider
+     * @return ExternalProfile
      */
     public function setProvider($provider) {
         $this->provider = $provider;

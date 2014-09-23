@@ -2,51 +2,64 @@
 
 namespace Zip2Vote\VoteBundle\Entity;
 
+/**
+ * Location
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Zip2Vote\VoteBundle\Entity\LocationRepository")
+ */
 class Location {
 
     /**
      *
      * @var string
+     * @ORM\Column(nullable=false)
      */
     private $address1;
 
     /**
      *
      * @var string
+     * @ORM\Column(nullable=true)
      */
     private $address2;
 
     /**
      *
      * @var string
+     * @ORM\Column(nullable=true)
      */
     private $address3;
 
     /**
      *
      * @var string
+     * @ORM\Column(nullable=false)
      */
     private $city;
 
     /**
      * @var 
+     * @ORM\Column(nullable=false)
      */
     private $state;
 
     /**
      * 
      * @var string
+     * @ORM\Column(nullable=false)
      */
     private $county;
 
     /**
      *
      * @var string
+     * @ORM\Column(nullable=false)
      */
     private $zipCode;
 
     /**
-     * 
+     * Get address1
      * @return address
      */
     public function getAddress1() {
@@ -54,8 +67,9 @@ class Location {
     }
 
     /**
-     * 
+     * Set Address1
      * @param address $address1
+     * @return Location
      */
     public function setAddress1($address1) {
         $this->address1 = $address1;
@@ -63,7 +77,7 @@ class Location {
     }
 
     /**
-     * 
+     * Get address2
      * @return address
      */
     public function getAddress2() {
@@ -71,8 +85,9 @@ class Location {
     }
 
     /**
-     * 
+     * Set address2
      * @param address $address2
+     * @return Location
      */
     public function setAddress2($address2) {
         $this->address2 = $address2;
@@ -80,7 +95,7 @@ class Location {
     }
 
     /**
-     * 
+     * Get address3
      * @return address
      */
     public function getAddress3() {
@@ -88,8 +103,9 @@ class Location {
     }
 
     /**
-     * 
+     * Set address3
      * @param address $address3
+     * @return Location
      */
     public function setAddress3($address3) {
         $this->address3 = $address3;
@@ -97,7 +113,7 @@ class Location {
     }
 
     /**
-     * 
+     * Get city
      * @return string
      */
     public function getCity() {
@@ -105,8 +121,9 @@ class Location {
     }
 
     /**
-     * 
+     * Set City
      * @param city $city
+     * @return Location
      */
     public function setCity($city) {
         $this->city = $city;
@@ -114,7 +131,7 @@ class Location {
     }
 
     /**
-     * 
+     * Get state
      * @return state
      */
     public function getState() {
@@ -122,16 +139,17 @@ class Location {
     }
 
     /**
-     * 
-     * @param \Zip2Vote\VoteBundle\Entity\enum $state
+     * Set state
+     * @param $state
+     * @return Location
      */
-    public function setState(enum $state) {
+    public function setState($state) {
         $this->state = $state;
         return $this;
     }
 
     /**
-     * 
+     * Get county
      * @return string
      */
     public function getCounty() {
@@ -139,8 +157,9 @@ class Location {
     }
 
     /**
-     * 
+     * Set county
      * @param string $county
+     * @return Location
      */
     public function setCounty($county) {
         $this->county = (string) $county;
@@ -148,16 +167,17 @@ class Location {
     }
 
     /**
-     * 
-     * @return char
+     * Get zipCode
+     * @return string
      */
     public function getZipCode() {
         return $this->zipCode;
     }
 
     /**
-     * 
-     * @param \Zip2Vote\VoteBundle\Entity\string $zipCode
+     * Set zipCode
+     * @param string $zipCode
+     * @return Location
      */
     public function setZipCode(string $zipCode) {
         $this->zipCode = (string) $zipCode;
@@ -165,5 +185,3 @@ class Location {
     }
 
 }
-
-?>

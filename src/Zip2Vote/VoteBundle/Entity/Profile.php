@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Zip2Vote\VoteBundle\Entity\ProfileRepository")
  */
-class Profile
-{
+class Profile {
+
     /**
      * @var integer
      *
@@ -78,14 +78,12 @@ class Profile
      */
     private $district;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -95,8 +93,7 @@ class Profile
      * @param null|ValueObject\Name $name
      * @return Profile
      */
-    public function setName(ValueObject\Name $name = null)
-    {
+    public function setName(ValueObject\Name $name = null) {
         $this->name = $name;
 
         return $this;
@@ -107,8 +104,7 @@ class Profile
      *
      * @return null|ValueObject\Name 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -118,8 +114,7 @@ class Profile
      * @param null|ValueObject\Address $address
      * @return Profile
      */
-    public function setAddress(ValueObject\Address $address = null)
-    {
+    public function setAddress(ValueObject\Address $address = null) {
         $this->address = $address;
 
         return $this;
@@ -130,8 +125,7 @@ class Profile
      *
      * @return null|ValueObject\Address 
      */
-    public function getAddress()
-    {
+    public function getAddress() {
         return $this->address;
     }
 
@@ -141,8 +135,7 @@ class Profile
      * @param null|\DateTime $dob
      * @return Profile
      */
-    public function setDob(\DateTime $dob = null)
-    {
+    public function setDob(\DateTime $dob = null) {
         $this->dob = $dob;
 
         return $this;
@@ -153,8 +146,7 @@ class Profile
      *
      * @return null|\DateTime 
      */
-    public function getDob()
-    {
+    public function getDob() {
         return $this->dob;
     }
 
@@ -164,8 +156,7 @@ class Profile
      * @param null|ValueObject\Location $location
      * @return Profile
      */
-    public function setLocation(ValueObject\Location $location = null)
-    {
+    public function setLocation(ValueObject\Location $location = null) {
         $this->location = $location;
 
         return $this;
@@ -176,8 +167,7 @@ class Profile
      *
      * @return null|ValueObject\Location 
      */
-    public function getLocation()
-    {
+    public function getLocation() {
         return $this->location;
     }
 
@@ -187,8 +177,7 @@ class Profile
      * @param null|Party $registeredParty
      * @return Profile
      */
-    public function setRegisteredParty(Party $registeredParty = null)
-    {
+    public function setRegisteredParty(Party $registeredParty = null) {
         $this->registeredParty = $registeredParty;
 
         return $this;
@@ -199,8 +188,7 @@ class Profile
      *
      * @return null|Party
      */
-    public function getRegisteredParty()
-    {
+    public function getRegisteredParty() {
         return $this->registeredParty;
     }
 
@@ -210,8 +198,7 @@ class Profile
      * @param null|Party $preferredParty
      * @return Profile
      */
-    public function setPreferredParty(Party $preferredParty = null)
-    {
+    public function setPreferredParty(Party $preferredParty = null) {
         $this->preferredParty = $preferredParty;
 
         return $this;
@@ -222,8 +209,7 @@ class Profile
      *
      * @return null|Party
      */
-    public function getPreferredParty()
-    {
+    public function getPreferredParty() {
         return $this->preferredParty;
     }
 
@@ -233,8 +219,7 @@ class Profile
      * @param null|District $district
      * @return Profile
      */
-    public function setDistrict(District $district = null)
-    {
+    public function setDistrict(District $district = null) {
         $this->district = $district;
 
         return $this;
@@ -245,8 +230,8 @@ class Profile
      *
      * @return null|District
      */
-    public function getDistrict()
-    {
+    public function getDistrict() {
         return $this->district;
     }
+
 }
