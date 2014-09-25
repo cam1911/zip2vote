@@ -15,8 +15,7 @@ use Zip2Vote\VoteBundle\Form\ProfileType;
  *
  * @Route("/profile")
  */
-class ProfileController extends Controller
-{
+class ProfileController extends Controller {
 
     /**
      * Lists all Profile entities.
@@ -25,8 +24,7 @@ class ProfileController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('Zip2VoteVoteBundle:Profile')->findAll();
@@ -35,6 +33,7 @@ class ProfileController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Profile entity.
      *
@@ -42,8 +41,7 @@ class ProfileController extends Controller
      * @Method("POST")
      * @Template("Zip2VoteVoteBundle:Profile:new.html.twig")
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Profile();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -58,7 +56,7 @@ class ProfileController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -69,8 +67,7 @@ class ProfileController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Profile $entity)
-    {
+    private function createCreateForm(Profile $entity) {
         $form = $this->createForm(new ProfileType(), $entity, array(
             'action' => $this->generateUrl('profile_create'),
             'method' => 'POST',
@@ -88,14 +85,13 @@ class ProfileController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Profile();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -106,8 +102,7 @@ class ProfileController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('Zip2VoteVoteBundle:Profile')->find($id);
@@ -119,7 +114,7 @@ class ProfileController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -131,8 +126,7 @@ class ProfileController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('Zip2VoteVoteBundle:Profile')->find($id);
@@ -145,21 +139,20 @@ class ProfileController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Profile entity.
-    *
-    * @param Profile $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Profile $entity)
-    {
+     * Creates a form to edit a Profile entity.
+     *
+     * @param Profile $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Profile $entity) {
         $form = $this->createForm(new ProfileType(), $entity, array(
             'action' => $this->generateUrl('profile_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -169,6 +162,7 @@ class ProfileController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Profile entity.
      *
@@ -176,8 +170,7 @@ class ProfileController extends Controller
      * @Method("PUT")
      * @Template("Zip2VoteVoteBundle:Profile:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('Zip2VoteVoteBundle:Profile')->find($id);
@@ -197,19 +190,19 @@ class ProfileController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Profile entity.
      *
      * @Route("/{id}", name="profile_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -235,13 +228,13 @@ class ProfileController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('profile_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('profile_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }
