@@ -2,8 +2,6 @@
 
 namespace Zip2Vote\VoteBundle\Controller;
 
-require_once 'C:\dev\goutte.phar';
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
