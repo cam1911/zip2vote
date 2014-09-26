@@ -7,14 +7,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Zip2Vote\VoteBundle\Form\RegisterType;
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
+
     /**
      * @Route("/")
      * @Template()
+     * 
      */
-    public function indexAction()
-    {
+    public function indexAction() {
 //        $params = array(
 //            'eMbrKey' => 'Peca, Lauren',
 //            'pbSrch' => ' Search '
@@ -32,12 +32,12 @@ class DefaultController extends Controller
 //        
 //        echo curl_exec($ch);
 //        exit;
-        
+
         return array(
             'newUserForm' => $this->createCreateForm()->createView()
         );
     }
-    
+
     /**
      * Creates a form to create a Profile entity.
      *
@@ -45,8 +45,7 @@ class DefaultController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm()
-    {
+    private function createCreateForm() {
         $form = $this->createForm(new RegisterType(), null, array(
 //            'action' => $this->generateUrl('profile_create'),
             'method' => 'POST',
@@ -56,4 +55,5 @@ class DefaultController extends Controller
 
         return $form;
     }
+
 }
