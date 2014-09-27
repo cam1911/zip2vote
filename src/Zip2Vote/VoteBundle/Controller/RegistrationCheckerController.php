@@ -2,20 +2,8 @@
 
 use Goutte\Client;
 
-/**
- * RegistrationChecker controller.
- *
- * @Route("/Register")
- */
 class RegistrationCheckerController extends Controller {
 
-    /**
-     * Check if user is registered
-     *
-     * @Route("/", name="register")
-     * @Method("GET")
-     * @Template()
-     */
     public function indexAction() {
 
         $client = new Client();
