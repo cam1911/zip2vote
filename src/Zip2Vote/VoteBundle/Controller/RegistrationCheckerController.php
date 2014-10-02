@@ -23,9 +23,11 @@ class RegistrationCheckerController extends Controller {
      */
     public function indexAction() {
 
+        // create a new cURL resource
+        $ch = \curl_init();
         $client = new Client();
         $crawler = $client->request('GET', 'https://team1.sos.state.tx.us/voterws/viw/faces/SearchSelectionVoter.jsp');
-        $client->getClient()->setDefaultOption('config/curl/' . \CURLOPT_TIMEOUT, 60);
+        $client->getClient()->setDefaultOption('verify', 'C:\xampp\php\cacert.pem');
         $form = $crawler->selectButton('Name')->form();
         $crawler = $client->submit($form, array(
             'County' => 'Dallas',
@@ -38,6 +40,7 @@ class RegistrationCheckerController extends Controller {
         $crawler->filter('.flash-error')->each(function ($node) {
                     print $node->text() . "\n";
                 });
+        return $this->client->getRequest();
     }
 
 }
