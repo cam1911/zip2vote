@@ -23,14 +23,28 @@ class RegistrationCheckerController extends Controller {
      */
     public function indexAction() {
 
+        $userInput = array(
+            'lastName' => 'Manley',
+            'firstName' => 'Peggy',
+            'month' => '03',
+            'day' => '19',
+            'year' => '1951',
+            'zipCode' => '77536',
+        );
+
         // create a new cURL resource
         $ch = \curl_init();
         $client = new Client();
         $client->getClient()->setDefaultOption('config/curl/' . \CURLOPT_SSL_VERIFYPEER, false);
         $client->getClient()->setDefaultOption('config/curl/' . \CURLOPT_SSL_VERIFYHOST, false);
         $crawler = $client->request('GET', 'https://team1.sos.state.tx.us/voterws/viw/faces/SearchSelectionVoter.jsp');
+        
+        // $crawler has contents of first, landing page
         $form = $crawler->selectButton('Next (Siga) >')->form();
         
+        // $form has the first form, with radio buttons
+        
+
         /*
          * To determine what fields I needed to supply, I put this here and
          *  looked at the output. Alternatively, I went to the url in Chrome and
@@ -39,18 +53,58 @@ class RegistrationCheckerController extends Controller {
          *  clicked the button. I inspected the headers of the request:
          * 
          * form1:radio1:N
-            form1:button1:Next (Siga) >
-            com.sun.faces.VIEW:_id58050:_id58051
-            form1:form1
+          form1:button1:Next (Siga) >
+          com.sun.faces.VIEW:_id58050:_id58051
+          form1:form1
          */
 //        var_dump($form->all());
-        $crawler = $client->submit($form, array(
+        $nextCrawler = $client->submit($form, array(
             'form1:radio1' => 'N',
             'form1:button1' => 'Next (Siga) >',
             'form1' => 'form1',
                 )
         );
         
+        // $nextCrawler represents the SECOND page, after submitting the first crawlers'
+        //  $form
+
+        /*
+         * New Code
+         */
+
+        $nextForm = $nextCrawler->selectButton('Next (Siga) >')->form();
+        
+        $nextCrawler = $client->submit($nextForm, array(
+            'form1:menu2' => '101',
+            'form1:lastName' => $userInput['lastName'],
+            'form1:firstName' => $userInput['firstName'],
+            'form1:tdlMonth' => $userInput['month'],
+            'form1:tdlDay' => $userInput['day'],
+            'form1:tdlYear' => $userInput['year'],
+            'form1:zip' => $userInput['zipCode'],
+            'form1:button1' => 'Next (Siga) >',
+            'form1' => 'form1',
+        ));
+        
+        $registration = (object)array(
+            'firstName' => null,
+            'lastName'  => null,
+            'address'   => null,
+            'validFrom' => null,
+            'effective' => null,
+            'status'    => null,
+            'county'    => null,
+            'precinct'  => null
+        );
+        
+        $xpath = '//form[@id="form1"]//td[contains(., "County")]/following-sibling::td';
+        $registration->county = $nextCrawler->filterXPath($xpath)->text();
+//        $registration->county = $nextCrawler->filter('#form1\:format3')->html();
+        var_dump($registration);
+        
+//        echo $nextCrawler->html();
+        
+
         /**
          * I did this to verify the page I was receiving was the right one..
          */
@@ -58,7 +112,7 @@ class RegistrationCheckerController extends Controller {
         $crawler->filter('.flash-error')->each(function ($node) {
                     print $node->text() . "\n";
                 });
-                die('done');
+        die('done');
     }
 
 }
