@@ -38,12 +38,12 @@ class RegistrationCheckerController extends Controller {
         $client->getClient()->setDefaultOption('config/curl/' . \CURLOPT_SSL_VERIFYPEER, false);
         $client->getClient()->setDefaultOption('config/curl/' . \CURLOPT_SSL_VERIFYHOST, false);
         $crawler = $client->request('GET', 'https://team1.sos.state.tx.us/voterws/viw/faces/SearchSelectionVoter.jsp');
-        
+
         // $crawler has contents of first, landing page
         $form = $crawler->selectButton('Next (Siga) >')->form();
-        
+
         // $form has the first form, with radio buttons
-        
+
 
         /*
          * To determine what fields I needed to supply, I put this here and
@@ -64,7 +64,7 @@ class RegistrationCheckerController extends Controller {
             'form1' => 'form1',
                 )
         );
-        
+
         // $nextCrawler represents the SECOND page, after submitting the first crawlers'
         //  $form
 
@@ -73,7 +73,7 @@ class RegistrationCheckerController extends Controller {
          */
 
         $nextForm = $nextCrawler->selectButton('Next (Siga) >')->form();
-        
+
         $nextCrawler = $client->submit($nextForm, array(
             'form1:menu2' => '101',
             'form1:lastName' => $userInput['lastName'],
@@ -85,25 +85,42 @@ class RegistrationCheckerController extends Controller {
             'form1:button1' => 'Next (Siga) >',
             'form1' => 'form1',
         ));
-        
-        $registration = (object)array(
-            'firstName' => null,
-            'lastName'  => null,
-            'address'   => null,
-            'validFrom' => null,
-            'effective' => null,
-            'status'    => null,
-            'county'    => null,
-            'precinct'  => null
+
+        $registration = (object) array(
+                    'name' => null,
+                    'address' => null,
+                    'validForm' => null,
+                    'effective' => null,
+                    'status' => null,
+                    'county' => null,
+                    'precinct' => null
         );
-        
+
         $xpath = '//form[@id="form1"]//td[contains(., "County")]/following-sibling::td';
         $registration->county = $nextCrawler->filterXPath($xpath)->text();
-//        $registration->county = $nextCrawler->filter('#form1\:format3')->html();
+
+        $xpath = '//form[@id="form1"]//td[contains(., "Precinct")]/following-sibling::td';
+        $registration->precinct = $nextCrawler->filterXPath($xpath)->text();
+
+        $xpath = '//form[@id="form1"]//td[contains(., "Status")]/following-sibling::td';
+        $registration->status = $nextCrawler->filterXPath($xpath)->text();
+
+        $xpath = '//form[@id="form1"]//td[contains(., "Effective")]/following-sibling::td';
+        $registration->effective = $nextCrawler->filterXPath($xpath)->text();
+
+        $xpath = '//form[@id="form1"]//td[contains(., "Valid From")]/following-sibling::td';
+        $registration->validForm = $nextCrawler->filterXPath($xpath)->text();
+
+        $xpath = '//form[@id="form1"]//td[contains(., "Address")]/following-sibling::td';
+        $registration->address = $nextCrawler->filterXPath($xpath)->text();
+
+        $xpath = '//form[@id="form1"]//td[contains(., "Name")]/following-sibling::td';
+        $registration->name = $nextCrawler->filterXPath($xpath)->text();
+
         var_dump($registration);
-        
-//        echo $nextCrawler->html();
-        
+
+        echo $nextCrawler->html();
+
 
         /**
          * I did this to verify the page I was receiving was the right one..
