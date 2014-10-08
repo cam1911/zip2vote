@@ -1,3 +1,8 @@
+zip2_texas:
+    resource: "@Zip2TexasBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 VoteControllers:
     resource: "@Zip2VoteVoteBundle/Controller/"
     type:     annotation
