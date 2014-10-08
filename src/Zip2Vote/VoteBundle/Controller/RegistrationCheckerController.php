@@ -17,14 +17,25 @@ use Zip2Vote\VoteBundle\Form\RegisterType;
  * @Route("/voter-check")
  */
 class RegistrationCheckerController extends Controller {
-
+    
     /**
      *
      * @Route("/lookup", name="checker.lookup")
      * @Method("POST")
      * @Template()
      */
-    public function lookupAction() {
+    public function lookupAction(Request $request) {
+        $form = static::createRegisterForm($this);
+        if ($form->handleRequest($request)->isValid()) {
+            $profile = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($profile);
+            $em->flush();
+
+            $_SESSION['registration.profile.id'] = $profile->getId();
+            return $this->redirect($this->generateUrl("registration.register"));
+        }
+        return $this->redirect($this->generateUrl("registration.register"));
 
         $config = static::testProfile();
         $userInput = array(

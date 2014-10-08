@@ -18,4 +18,5 @@ class DefaultController extends Controller {
             'newUserForm' => RegistrationController::createCreateForm($this)->createView()
         );
     }
+
 }
