@@ -42,6 +42,8 @@ class ProfileController extends Controller {
      * @Template("Zip2VoteVoteBundle:Profile:new.html.twig")
      */
     public function createAction(Request $request) {
+        
+        // move this into a new registration controller
         $entity = new Profile();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);

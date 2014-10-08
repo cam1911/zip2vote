@@ -45,9 +45,9 @@ class Profile {
     private $dob;
 
     /**
-     * @var null|ValueObject\Location
+     * @var null|Location
      *
-     * @ORM\ManyToOne(targetEntity="ValueObject\Location")
+     * @ORM\ManyToOne(targetEntity="Location")
      * @ORM\Column(nullable=true)
      */
     private $location;
@@ -70,10 +70,9 @@ class Profile {
     private $preferredParty;
 
     /**
-     * If null, the person is considered an Independent
-     * @var null|ValueObject\District
+     * @var null|District
      *
-     * @ORM\ManyToOne(targetEntity="ValueObject\District")
+     * @ORM\ManyToOne(targetEntity="District")
      * @ORM\Column(nullable=true)
      */
     private $district;
@@ -153,10 +152,10 @@ class Profile {
     /**
      * Set location
      *
-     * @param null|ValueObject\Location $location
+     * @param null|Location $location
      * @return Profile
      */
-    public function setLocation(ValueObject\Location $location = null) {
+    public function setLocation(Location $location = null) {
         $this->location = $location;
 
         return $this;
@@ -165,7 +164,7 @@ class Profile {
     /**
      * Get location
      *
-     * @return null|ValueObject\Location 
+     * @return null|Location 
      */
     public function getLocation() {
         return $this->location;

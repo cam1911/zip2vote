@@ -34,8 +34,7 @@ class PollingLocation
     /**
      * @var Enum\ElectionType
      *
-     * @ORM\ManyToOne(type="appEnum")
-     * @ORM\Column(nullable=true))
+     * @ORM\Column(nullable=true, type="app_enum")
      */
     private $electionType;
 
