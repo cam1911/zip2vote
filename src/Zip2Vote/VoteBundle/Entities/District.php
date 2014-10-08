@@ -23,7 +23,6 @@ class District
      * @var string
      *
      * @ORM\OneToOne(targetEntity="ValueObject\Legislator")
-     * @ORM\Column(nullable=true)
      */
     private $stateRepresentative;
     

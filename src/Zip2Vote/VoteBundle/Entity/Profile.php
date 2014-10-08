@@ -24,16 +24,14 @@ class Profile {
     /**
      * @var null|ValueObject\Name
      *
-     * @ORM\ManyToOne(targetEntity="ValueObject\Name")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToOne(targetEntity="\Zip2Vote\VoteBundle\Entity\ValueObject\Name", cascade={"persist"})
      */
     private $name;
 
     /**
      * @var null|ValueObject\Address
      *
-     * @ORM\ManyToOne(targetEntity="ValueObject\Address")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToOne(targetEntity="\Zip2Vote\VoteBundle\Entity\ValueObject\Address", cascade={"persist"})
      */
     private $address;
 
@@ -47,8 +45,7 @@ class Profile {
     /**
      * @var null|Location
      *
-     * @ORM\ManyToOne(targetEntity="Location")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToOne(targetEntity="Location", cascade={"persist"})
      */
     private $location;
 
@@ -56,26 +53,23 @@ class Profile {
      * If null, the person is considered an Independent
      * @var null|Party
      *
-     * @ORM\ManyToOne(targetEntity="Party")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToOne(targetEntity="Party", cascade={"persist"})
      */
     private $registeredParty;
 
     /**
      * @var null|Party
      *
-     * @ORM\ManyToOne(targetEntity="Party")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToOne(targetEntity="Party", cascade={"persist"})
      */
     private $preferredParty;
-
-    /**
-     * @var null|District
-     *
-     * @ORM\ManyToOne(targetEntity="District")
-     * @ORM\Column(nullable=true)
-     */
-    private $district;
+//
+//    /**
+//     * @var null|District
+//     *
+//     * @ORM\ManyToOne(targetEntity="District")
+//     */
+//    private $district;
 
     /**
      * Get id

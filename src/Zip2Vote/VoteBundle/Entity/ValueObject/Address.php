@@ -126,4 +126,17 @@ class Address {
         $this->zip = $zip;
         return $this;
     }
+    
+    public function standardize()
+    {
+        return sprintf("%s, %s, %s, %s %s",
+            $this->getLine1(), $this->getLine2(), $this->getCity(),
+            $this->getState(), $this->getZip()
+        );
+    }
+    
+    public function __toString()
+    {
+        return $this->standardize();
+    }
 }

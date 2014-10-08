@@ -20,14 +20,15 @@ class Party
     private $id;
     
     /**
-     * @var string
-     * @ORM\Column(nullable=false)
+     * @var null|ValueObject\Name
+     *
+     * @ORM\ManyToOne(targetEntity="\Zip2Vote\VoteBundle\Entity\ValueObject\Name", cascade={"persist"})
      */
     private $name;
 
     /**
      * Get name
-     * @return string
+     * @return ValueObject\Name
      */
     public function getName()
     {
@@ -36,12 +37,12 @@ class Party
 
     /**
      * Set name
-     * @param string $name
+     * @param ValueObject\Name $name
      * @return District
      */
-    public function setName($name)
+    public function setName(ValueObject\Name $name)
     {
-        $this->name = (string)$name;
+        $this->name = $name;
         return $this;
     }
     

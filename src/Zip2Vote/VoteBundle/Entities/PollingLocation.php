@@ -27,7 +27,6 @@ class PollingLocation
      * @var ValueObject\TimeRange
      *
      * @ORM\ManyToOne(targetEntity="ValueObject\TimeRange")
-     * @ORM\Column(nullable=true)
      */
     private $timesAvailable;
 
@@ -49,7 +48,6 @@ class PollingLocation
      * @var ValueObject\Location
      *
      * @ORM\ManyToOne(targetEntity="ValueObject\Location")
-     * @ORM\Column(nullable=true)
      */
     private $location;
 

@@ -20,6 +20,13 @@ class ExternalProfile {
     private $id;
 
     /**
+     * @var null|Account
+     *
+     * @ORM\ManyToOne(targetEntity="Account", inversedBy="externalProfiles", cascade={"persist"})
+     */
+    private $account;
+
+    /**
      *
      * @var 
      */
@@ -43,5 +50,3 @@ class ExternalProfile {
     }
 
 }
-
-?>

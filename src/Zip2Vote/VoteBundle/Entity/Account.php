@@ -36,18 +36,16 @@ class Account {
     private $password;
 
     /**
-     * @var null|ValueObject\ExternalProfile
+     * @var null|ExternalProfile[]
      *
-     * @ORM\OneToMany(targetEntity="ValueObject\ExternalProfile")
-     * @ORM\Column(nullable=true)
+     * @ORM\OneToMany(targetEntity="ExternalProfile", mappedBy="account", cascade={"persist"})
      */
-    private $externalProfile;
+    private $externalProfiles;
 
     /**
-     * @var null|ValueObject\Profile
+     * @var null|Profile
      *
-     * @ORM\OneToOne(targetEntity="ValueObject\Profile")
-     * @ORM\Column(nullable=false)
+     * @ORM\OneToOne(targetEntity="Profile", cascade={"persist"})
      */
     private $profile;
 
@@ -107,7 +105,7 @@ class Account {
 
     /**
      * Get pfofile
-     * @return null|ValueObject\Profile 
+     * @return null|Profile 
      */
     public function getProfile() {
         return $this->profile;
@@ -115,10 +113,10 @@ class Account {
 
     /**
      * Set profile
-     * @param null|ValueObject\Profile $profile
+     * @param null|Profile $profile
      * @return Account
      */
-    public function setProfile(ValueObject\Profile $profile = null) {
+    public function setProfile(Profile $profile = null) {
         $this->profile = $profile;
         return $this;
     }

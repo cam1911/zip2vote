@@ -1,0 +1,15 @@
+{% extends '::layout.main.html.twig' %}
+{% form_theme registerForm 'Zip2VoteVoteBundle:Form:theme.register.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-offset-3 col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Lookup Polling and Voter Registration</div>
+            <div class="panel-body">
+                {{ form(registerForm) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

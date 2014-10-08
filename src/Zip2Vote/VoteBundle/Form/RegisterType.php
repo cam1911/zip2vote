@@ -5,6 +5,8 @@ namespace Zip2Vote\VoteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormFactory;
+use Zip2Vote\VoteBundle\Entity;
 
 class RegisterType extends AbstractType
 {
@@ -15,10 +17,10 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('address')
-            ->add('dob')
-            ->add('location')
+            ->add('name', 'text')
+            ->add('address', 'text')
+            ->add('dob', 'date')
+            ->add('location', 'text')
         ;
     }
     
@@ -38,5 +40,15 @@ class RegisterType extends AbstractType
     public function getName()
     {
         return 'zip2vote_votebundle_register';
+    }
+    
+    public static function blank(FormFactory $factory, $options = array())
+    {
+        $profile = new Entity\Profile();
+//        $profile->setAddress(new Entity\ValueObject\Address());
+        
+        $type = new static();
+        $form = $factory->create($type, $profile, $options);
+        return $form;
     }
 }

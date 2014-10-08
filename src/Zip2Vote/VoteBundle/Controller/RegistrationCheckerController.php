@@ -7,29 +7,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Goutte\Client;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Yaml\Parser;
 
 /**
  * RegistrationChecker Controller.
  *
- * @Route("/registrationchecker")
+ * @Route("/voter-check")
  */
 class RegistrationCheckerController extends Controller {
 
     /**
      *
-     * @Route("/", name="registrationchecker")
-     * @Method("GET")
+     * @Route("/lookup", name="checker.lookup")
+     * @Method("POST")
      * @Template()
      */
-    public function indexAction() {
+    public function lookupAction() {
 
+        $config = static::testProfile();
         $userInput = array(
-            'lastName' => 'Manley',
-            'firstName' => 'Peggy',
-            'month' => '03',
-            'day' => '19',
-            'year' => '1951',
-            'zipCode' => '77536',
+            'lastName' => $config->getName()->getLast(),
+            'firstName' => $config->getName()->getFirst(),
+            'month' => $config->getDob()->format('m'),
+            'day' => $config->getDob()->format('d'),
+            'year' => $config->getDob()->format('Y'),
+            'zipCode' => $config->getAddress()->getZip(),
         );
 
         // create a new cURL resource
@@ -132,4 +135,51 @@ class RegistrationCheckerController extends Controller {
         die('done');
     }
 
+    /**
+     * Creates a form to create a Profile entity.
+     *
+     * @param Profile $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    public static function createRegisterForm(Controller $controller) {
+        // Create this RegisterType::blank()
+        $form = RegisterType::blank(
+            $controller->container->get('form.factory'), array(
+                'action' => $controller->generateUrl('checker.lookup'),
+                'method' => 'POST',
+            )
+        );
+        $form->add('submit', 'submit', array('label' => 'Check Voter Registration'));
+
+        return $form;
+    }
+    
+    public static function testProfile()
+    {
+        $locator = new FileLocator();
+        $yaml = new Parser();
+        
+        $data = $yaml->parse(file_get_contents($locator->locate(
+            __DIR__ . '/../Resources/config/test-profile.yml'
+        )), false, true);
+        
+        $address = new \Zip2Vote\VoteBundle\Entity\ValueObject\Address();
+        $address->setZip($data['zipCode']);
+        $dob = new \DateTime(
+            $data['dob']['month'].'/'.$data['dob']['day'].'/'.$data['dob']['year']
+        );
+        
+        $name = new \Zip2Vote\VoteBundle\Entity\ValueObject\Name();
+        $name->setFirst($data['firstName'])
+            ->setLast($data['lastName'])
+        ;
+        
+        $profile = new \Zip2Vote\VoteBundle\Entity\Profile();
+        $profile->setAddress($address)
+            ->setDob($dob)
+            ->setName($name)
+        ;
+        return $profile;
+    }
 }
