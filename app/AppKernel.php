@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Zip2Vote\VoteBundle\Zip2VoteVoteBundle(),
 			new FOS\FacebookBundle\FOSFacebookBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+            new Zip2Vote\State\TexasBundle\Zip2TexasBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -104,7 +104,7 @@ class RegistrationCheckerController extends Controller {
         $registration = (object) array(
                     'name' => null,
                     'address' => null,
-                    'validForm' => null,
+                    'validFrom' => null,
                     'effective' => null,
                     'status' => null,
                     'county' => null,
@@ -124,7 +124,7 @@ class RegistrationCheckerController extends Controller {
         $registration->effective = $nextCrawler->filterXPath($xpath)->text();
 
         $xpath = '//form[@id="form1"]//td[contains(., "Valid From")]/following-sibling::td';
-        $registration->validForm = $nextCrawler->filterXPath($xpath)->text();
+        $registration->validFrom = $nextCrawler->filterXPath($xpath)->text();
 
         $xpath = '//form[@id="form1"]//td[contains(., "Address")]/following-sibling::td';
         $registration->address = $nextCrawler->filterXPath($xpath)->text();
