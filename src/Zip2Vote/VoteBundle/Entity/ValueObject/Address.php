@@ -24,6 +24,12 @@ class Address {
      * @var string
      * @ORM\Column(nullable=true)
      */
+    private $raw;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
     private $line1;
 
     /**
@@ -139,4 +145,14 @@ class Address {
     {
         return $this->standardize();
     }
+    
+    public function getRaw() {
+        return $this->raw;
+    }
+
+    public function setRaw($raw) {
+        $this->raw = $raw;
+    }
+
+
 }

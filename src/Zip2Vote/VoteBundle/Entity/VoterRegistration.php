@@ -24,6 +24,13 @@ class VoterRegistration {
     /**
      * @var null|ValueObject\Name
      *
+     * @ORM\OneToOne(targetEntity="Profile", cascade={"persist"})
+     */
+    private $profile;
+
+    /**
+     * @var null|ValueObject\Name
+     *
      * @ORM\ManyToOne(targetEntity="\Zip2Vote\VoteBundle\Entity\ValueObject\Name", cascade={"persist"})
      */
     private $name;
@@ -92,7 +99,17 @@ class VoterRegistration {
     public function getName() {
         return $this->name;
     }
+    
+    public function getProfile() {
+        return $this->profile;
+    }
 
+    public function setProfile(ValueObject\Name $profile) {
+        $this->profile = $profile;
+        return $this;
+    }
+
+    
     /**
      * Set address
      *

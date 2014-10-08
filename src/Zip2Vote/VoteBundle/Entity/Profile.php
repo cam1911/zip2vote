@@ -50,6 +50,13 @@ class Profile {
     private $location;
 
     /**
+     * @var null|VoterRegistration
+     *
+     * @ORM\OneToOne(targetEntity="VoterRegistration", cascade={"persist"})
+     */
+    private $voterRegistration;
+
+    /**
      * If null, the person is considered an Independent
      * @var null|Party
      *
@@ -226,5 +233,11 @@ class Profile {
     public function getDistrict() {
         return $this->district;
     }
+    public function getVoterRegistration() {
+        return $this->voterRegistration;
+    }
 
+    public function setVoterRegistration(VoterRegistration $voterRegistration) {
+        $this->voterRegistration = $voterRegistration;
+    }
 }
