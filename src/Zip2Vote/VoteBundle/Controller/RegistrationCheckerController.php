@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Goutte\Client;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Yaml\Parser;
+use Zip2Vote\VoteBundle\Form\RegisterType;
 
 /**
  * RegistrationChecker Controller.
@@ -143,9 +144,13 @@ class RegistrationCheckerController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     public static function createRegisterForm(Controller $controller) {
-        // Create this RegisterType::blank()
+        $profile = static::testProfile();
+        $controller->getDoctrine()->getManager()->persist($profile);
+        
         $form = RegisterType::blank(
-            $controller->container->get('form.factory'), array(
+            $controller->container->get('form.factory'),
+            $profile,
+            array(
                 'action' => $controller->generateUrl('checker.lookup'),
                 'method' => 'POST',
             )

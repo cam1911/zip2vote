@@ -17,10 +17,10 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text')
-            ->add('address', 'text')
-            ->add('dob', 'date')
-            ->add('location', 'text')
+            ->add('name')
+            ->add('address')
+            ->add('dob')
+            ->add('location')
         ;
     }
     
@@ -42,11 +42,8 @@ class RegisterType extends AbstractType
         return 'zip2vote_votebundle_register';
     }
     
-    public static function blank(FormFactory $factory, $options = array())
+    public static function blank(FormFactory $factory, $profile, $options = array())
     {
-        $profile = new Entity\Profile();
-//        $profile->setAddress(new Entity\ValueObject\Address());
-        
         $type = new static();
         $form = $factory->create($type, $profile, $options);
         return $form;

@@ -38,7 +38,7 @@ class Profile {
     /**
      * @var null|\DateTime
      *
-     * @ORM\Column(name="dob", type="datetime", nullable=true)
+     * @ORM\Column(name="dob", type="date", nullable=true)
      */
     private $dob;
 

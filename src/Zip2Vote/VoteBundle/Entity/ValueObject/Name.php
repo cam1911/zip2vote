@@ -126,4 +126,14 @@ class Name {
         $this->suffix = $suffix;
         return $this;
     }
+    
+    public function standard()
+    {
+        return $this->first . ' ' . $this->last;
+    }
+    
+    public function __toString()
+    {
+        return $this->standard();
+    }
 }

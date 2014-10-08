@@ -54,8 +54,12 @@ class RegistrationController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     public static function createCreateForm(Controller $controller) {
+        $profile = \Zip2Vote\VoteBundle\Controller\RegistrationCheckerController::testProfile();
+        $controller->getDoctrine()->getManager()->persist($profile);
         $form = ProfileByZipCodeType::blank(
-            $controller->container->get('form.factory'), array(
+            $controller->container->get('form.factory'),
+            $profile,
+            array(
                 'action' => $controller->generateUrl('registration.process-zip'),
                 'method' => 'POST',
             )
