@@ -104,7 +104,7 @@ class VoterRegistration {
         return $this->profile;
     }
 
-    public function setProfile(ValueObject\Name $profile) {
+    public function setProfile(Profile $profile) {
         $this->profile = $profile;
         return $this;
     }

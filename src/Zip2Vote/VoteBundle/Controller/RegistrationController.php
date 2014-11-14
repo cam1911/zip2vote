@@ -33,6 +33,16 @@ class RegistrationController extends Controller {
         }
         return $this->redirect($this->generateUrl("home"));
     }
+    
+    /**
+     * @Route("/register", name="registration.status")
+     * @Template()
+     * 
+     */
+    public function statusAction()
+    {
+        die('hey,. you are either registered or you arent. awesome Cameron design page to be inserted here');
+    }
 
     /**
      * @Route("/register", name="registration.register")

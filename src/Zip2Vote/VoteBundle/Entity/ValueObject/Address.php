@@ -61,6 +61,12 @@ class Address {
      * @ORM\Column(nullable=true, length=9)
      */
     private $zip;
+    
+    /*
+     * @var string
+     * @ORM\Column(nullable=true, length=15)
+     */
+    private $county;
 
     public function getId()
     {
@@ -153,6 +159,15 @@ class Address {
     public function setRaw($raw) {
         $this->raw = $raw;
     }
+    public function getCounty() {
+        return $this->county;
+    }
+
+    public function setCounty($county) {
+        $this->county = $county;
+        return $this;
+    }
+
 
 
 }

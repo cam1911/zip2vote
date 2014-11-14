@@ -27,7 +27,8 @@ class RegistrationCheckerController extends Controller {
     public function lookupAction(Request $request) {
         $form = static::createRegisterForm($this);
         if ($form->handleRequest($request)->isValid()) {
-            $profile = $form->getData();
+//            $profile = $form->getData();
+            $profile = static::testProfile();
 
             $crawler = new \Zip2Vote\State\TexasBundle\Lib\VoterRegistrationCrawler();
             $registration = $crawler->getRegistration($profile);
@@ -42,9 +43,7 @@ class RegistrationCheckerController extends Controller {
             $em->flush();
 
             $_SESSION['registration.profile.id'] = $profile->getId();
-            var_dump($profile);
-            exit;
-//            return $this->redirect($this->generateUrl("registration.register"));
+            return $this->redirect($this->generateUrl("registration.status"));
         }
         return $this->redirect($this->generateUrl("registration.register"));
         die('done');
@@ -84,7 +83,8 @@ class RegistrationCheckerController extends Controller {
         )), false, true);
         
         $address = new \Zip2Vote\VoteBundle\Entity\ValueObject\Address();
-        $address->setZip($data['zipCode']);
+        $address->setZip($data['zipCode'])
+        ->setCounty($data['county']);
         $dob = new \DateTime(
             $data['dob']['month'].'/'.$data['dob']['day'].'/'.$data['dob']['year']
         );

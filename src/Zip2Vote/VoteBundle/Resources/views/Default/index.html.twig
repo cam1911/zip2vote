@@ -1,49 +1,89 @@
 {% extends '::layout.main.html.twig' %}
 
 {% block content %}
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-        <div class="row">
-            <div class="col-lg-offset-3 col-lg-3 text-center" id="externalLogins">
-                <h1>Auto Fill Your Data</h1>
-                {% image '@Zip2VoteVoteBundle/Resources/public/img/login-fb-lg-400.png' %}
-                    <img src="{{ asset_url }}" alt="Login with Facebook" title="Login with Facebook" />
-                {% endimage %}
-            </div>
-            <div class="col-lg-offset-1 col-lg-3 text-center">
-                {{ form_start(newUserForm) }}
-                <h1>Voter Registration</h1>
-                <div class="input-group input-group-lg" style="margin-top: 5vh;">
-                    {{ form_widget(newUserForm.address.zip, {'attr': {'placeholder': 'Enter zip code to quick start'}}) }}
-                    <span class="input-group-btn">
-                        {{ form_widget(newUserForm.submit, {'attr': {'class': 'btn btn-primary'}}) }}
-                    </span>
-                </div>
-                {{ form_end(newUserForm) }}
+<html>
+    <head>
+        <link href="@VoteBundle\Resources\public\css\index.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Voting Made Simple</h1>
+                <p>Stay informed about the issues that matter to you the most</p>
             </div>
         </div>
-    </div>
-    <div class="item">
-        <div class="row">
-            <div class="col-lg-offset-3 col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Lookup Polling and Voter Registration</div>
-                    <div class="panel-body">
-                        {{ form(newUserForm) }}
+
+        <div class="register">
+            <div class="container">
+                <h1>Register to Vote</h1>
+                <p>Login with facebook to use our one click registration process, or manually enter information </p> <br>
+                <button>Register with Facebook</button> <br> <br>
+                <form> Registration Form <br> 
+                    First name:
+                    <input type="text" name="firstname">
+                    <br>
+                    Last name:
+                    <input type="text" name="lastname">
+                    <br>
+                    Date of Birth: 
+                    <input type="text" name="DOB">
+                    <br>
+                    TX Drivers License #: 
+                    <input type="text" name="ID">
+                    <br>
+                    County: 
+                    <input type="text" name="county">
+                    <br>
+                    Address: 
+                    <input type="text" name="address">
+                    <br>
+                    City: 
+                    <input type="text" name="city">
+                    <br>
+                    State: 
+                    <input type=text" name="state">
+                    <br>
+                    Zip: 
+                    <input type="text" name="zip">
+                </form>
+            </div>
+        </div>
+
+        <div class="polling">
+            <div class="container">
+                <h1>Polling Locations</h1>
+                <p>Find out the exactly where to vote on election day</p>
+                <br>
+                <form>
+                    Address: 
+                    <input type="text" name="firstname">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+        <div class="election">
+            <div class="container">
+                <h1>Election Center </h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Candidates</h3>
+                        <p>Learn about who you will be electing and get to know their policies</p>
+                        <p><a href="#">Learn about candidates</a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Important Dates</h3>
+                        <p>Stay reminded of important election dates such as early voting, election day, and registration periods</p>
+                        <p><a href="#">Remember important dates</a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Bills</h3>
+                        <p>See what legislation is getting proposed and track the lifecycle of bills</p>
+                        <p><a href="#">View bills</a></p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-  </div>
-</div>
+    </body>
+</html>
 {% endblock %}

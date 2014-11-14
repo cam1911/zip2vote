@@ -12,6 +12,6 @@ class ProfileAdapter
         ;
         $profile->getAddress()->setRaw($result->address);
         $profile->setVoterRegistration($registration);
-        return $this;
+        return $profile;
     }
 }

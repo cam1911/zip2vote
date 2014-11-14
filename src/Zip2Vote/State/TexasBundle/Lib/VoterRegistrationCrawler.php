@@ -2,6 +2,7 @@
 namespace Zip2Vote\State\TexasBundle\Lib;
 use Symfony\Component\DomCrawler\Crawler;
 use Zip2Vote\VoteBundle\Entity\Profile;
+use Zip2Vote\VoteBundle\Entity\ValueObject\Address;
 use Goutte\Client;
 
 class VoterRegistrationCrawler extends Crawler
@@ -14,6 +15,7 @@ class VoterRegistrationCrawler extends Crawler
     public function getRegistration(Profile $config)
     {
         $userInput = array(
+            'county' => $config->getAddress()->getCounty(),
             'lastName' => $config->getName()->getLast(),
             'firstName' => $config->getName()->getFirst(),
             'month' => $config->getDob()->format('m'),
@@ -74,7 +76,7 @@ class VoterRegistrationCrawler extends Crawler
             'form1:button1' => 'Next (Siga) >',
             'form1' => 'form1',
         ));
-        echo $nextCrawler->html();exit;
+//        echo $nextCrawler->html();exit;
 
         $registration = (object) array(
                     'name' => null,
